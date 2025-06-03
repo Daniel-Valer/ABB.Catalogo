@@ -56,6 +56,7 @@ namespace ABB.Catalogo.AccesoDatos.Core
             }
             return ListaEntidad;
         }
+        
         public int GetUsuarioId(string pUsuario, string pPassword)
         {
             try
@@ -139,6 +140,42 @@ namespace ABB.Catalogo.AccesoDatos.Core
             }
             return SegSSOMUsuario;
         }
+        public Usuario BuscaUsuarioId(int pUsuarioId)
+        {
+            Usuario entidad = null;
+            try
+            {
+
+                using (SqlConnection conexion = new SqlConnection(ConfigurationManager.ConnectionStrings[ConfigurationManager.AppSettings["cnnSql"]].ConnectionString))
+                {
+                    using (SqlCommand comando = new SqlCommand("paUsuario_BuscaUserId", conexion))
+                    {
+                        comando.CommandType = CommandType.StoredProcedure;
+                        comando.Parameters.AddWithValue("@ParamUsuario", pUsuarioId);
+                        conexion.Open();
+                        SqlDataReader reader = comando.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            entidad = LlenarEntidad(reader);
+
+                        }
+                        conexion.Close();
+                    }
+
+                }
+
+                return entidad;
+            }
+            catch (Exception ex)
+            {
+                string innerException = (ex.InnerException == null) ? "" : ex.InnerException.ToString();
+                //Logger.paginaNombre = this.GetType().Name;
+                //Logger.Escribir("Error en Logica de Negocio: " + ex.Message + ". " + ex.StackTrace + ". " + innerException);
+                return entidad;
+            }
+
+        }
+
 
 
 

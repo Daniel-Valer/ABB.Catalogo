@@ -30,6 +30,7 @@ namespace ABB.Catalogo.LogicaNegocio.Core
                 return lista;
             }
         }
+       
         public int GetUsuarioId(string pUsuario, string pPassword)
         {
             try
@@ -73,6 +74,24 @@ namespace ABB.Catalogo.LogicaNegocio.Core
 
             }
         }
+        public Usuario BuscaUsuarioId(int pUsuarioId)
+        {
+            try
+            {
+                UsuariosDA usuario = new UsuariosDA();
+                return usuario.BuscaUsuarioId(pUsuarioId);
+
+
+            }
+            catch (Exception ex)
+            {
+                string innerException = (ex.InnerException == null) ? "" : ex.InnerException.ToString();
+                //Logger.paginaNombre = this.GetType().Name;
+                //Logger.Escribir("Error en Logica de Negocio: " + ex.Message + ". " + ex.StackTrace + ". " + innerException);
+                throw;
+            }
+        }
+
 
 
 

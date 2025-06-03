@@ -1,0 +1,63 @@
+﻿@model IEnumerable<ABB.Catalogo.Entidades.Core.Usuario>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IdUsuario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CodUsuario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ClaveTxt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombres)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdRol)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DesRol)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdUsuario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CodUsuario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClaveTxt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombres)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdRol)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DesRol)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.IdUsuario }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

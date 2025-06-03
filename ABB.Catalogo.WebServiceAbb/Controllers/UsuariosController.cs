@@ -20,9 +20,24 @@ namespace ABB.Catalogo.WebServiceAbb.Controllers
 
             return usuarios;
         }
+        // GET: api/Usuarios?idusuario=5
+        public Usuario Get([FromUri] int IdUsuario)
+        {
+            try
+            {
+                UsuariosLN usuario = new UsuariosLN();
+                return usuario.BuscaUsuarioId(IdUsuario);
+            }
+            catch (Exception ex)
+            {
+                string innerException = (ex.InnerException == null) ? "" : ex.InnerException.ToString();
+                //Logger.paginaNombre = this.GetType().Name;
+                //Logger.Escribir("Error en Logica de Negocio: " + ex.Message + ". " + ex.StackTrace + ". " + innerException);
+                throw;
+            }
+        }
 
-
-        // GET: api/Usuarios/5
+        // GET api/usuarios?pUsuario=juan&pPassword=123
         public int Get([FromUri] string pUsuario, [FromUri] string pPassword)
         {
             try

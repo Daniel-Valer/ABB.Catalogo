@@ -8,5 +8,7 @@ namespace ABB.Catalogo.Entidades.Core
 {
     public class Rol
     {
+        public int IdRol { get; set; }
+        public string DesRol { get; set; }
     }
 }

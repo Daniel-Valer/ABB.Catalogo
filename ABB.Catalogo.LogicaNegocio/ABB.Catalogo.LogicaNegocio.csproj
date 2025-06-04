@@ -50,6 +50,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Core\CategoriaLN.cs" />
+    <Compile Include="Core\ProductoLN.cs" />
     <Compile Include="Core\RolLN.cs" />
     <Compile Include="Core\UsuariosLN.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

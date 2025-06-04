@@ -1,11 +1,12 @@
-﻿using ABB.Catalogo.Entidades.Core;
-using ABB.Catalogo.AccesoDatos.Core;
+﻿using ABB.Catalogo.AccesoDatos.Core;
+using ABB.Catalogo.Entidades.Base;
+using ABB.Catalogo.Entidades.Core;
+using ABB.Catalogo.Utiles.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ABB.Catalogo.Entidades.Base;
 
 
 namespace ABB.Catalogo.LogicaNegocio.Core
@@ -19,8 +20,6 @@ namespace ABB.Catalogo.LogicaNegocio.Core
             {
                 UsuariosDA usuarios = new UsuariosDA();
                 return usuarios.ListarUsuarios();
-
-
             }
             catch (Exception ex)
             {
@@ -65,7 +64,8 @@ namespace ABB.Catalogo.LogicaNegocio.Core
         {
             try
             {
-                return new UsuariosDA().ModificarUsuario(IdUsuario,usuario);
+                return new UsuariosDA().ModificarUsuario(IdUsuario, usuario);
+
             }
             catch (Exception ex)
             {
@@ -92,6 +92,23 @@ namespace ABB.Catalogo.LogicaNegocio.Core
             }
         }
 
+        public bool Eliminar(int idUsuario)
+        {
+            try
+            {
+                UsuariosDA usuario = new UsuariosDA();
+                return usuario.Eliminar(idUsuario);
+
+
+            }
+            catch (Exception ex)
+            {
+                string innerException = (ex.InnerException == null) ? "" : ex.InnerException.ToString();
+                //Logger.paginaNombre = this.GetType().Name;
+                //Logger.Escribir("Error en Logica de Negocio: " + ex.Message + ". " + ex.StackTrace + ". " + innerException);
+                throw;
+            }
+        }
 
 
 

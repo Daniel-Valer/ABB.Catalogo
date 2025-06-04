@@ -43,6 +43,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Core\CategoriaDA.cs" />
+    <Compile Include="Core\ProductoDA.cs" />
     <Compile Include="Core\RolDA.cs" />
     <Compile Include="Core\UsuariosDA.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

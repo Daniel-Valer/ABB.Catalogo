@@ -10,59 +10,58 @@
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        <h4>Usuario</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+<div class="form-horizontal">
+    <h4>Usuario</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.IdUsuario, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(model => model.IdUsuario, new { @class = "form-control", @readonly = "readonly" })
-                @Html.ValidationMessageFor(model => model.IdUsuario, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.CodUsuario, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CodUsuario, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CodUsuario, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Nombres, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Nombres, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Nombres, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <!-- IdRol como dropdown -->
-        <div class="form-group">
-            @Html.LabelFor(model => model.IdRol, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownListFor(Model => Model.IdRol,
-               new SelectList(ViewBag.listaRoles, "IdRol", "DesRol"),
-               htmlAttributes: new { @id = "ddlRol", @class = "form-control input-sm" })
-                @Html.ValidationMessageFor(model => model.IdRol, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
+    <!-- IdUsuario como solo lectura -->
+    <div class="form-group">
+        @Html.LabelFor(model => model.IdUsuario, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.IdUsuario, new { @class = "form-control", @readonly = "readonly" })
+            @Html.ValidationMessageFor(model => model.IdUsuario, "", new { @class = "text-danger" })
         </div>
     </div>
+ 
+    <!-- Otros campos del formulario para editar el usuario -->
+    <div class="form-group">
+        @Html.LabelFor(model => model.CodUsuario, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.CodUsuario, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.CodUsuario, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <!-- Otro campo de ejemplo -->
+    <div class="form-group">
+        @Html.LabelFor(model => model.Nombres, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Nombres, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Nombres, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <!-- Campo de rol (con dropdown) -->
+    <div class="form-group">
+        @Html.LabelFor(model => model.IdRol, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.IdRol,
+                new SelectList(ViewBag.listaRoles, "IdRol", "DesRol", Model.IdRol),
+                htmlAttributes: new { @id = "ddlRol", @class = "form-control input-sm" })
+            @Html.ValidationMessageFor(model => model.IdRol, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+</div>
 }
 
 <div>
     @Html.ActionLink("Retorno", "Index")
 </div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
 

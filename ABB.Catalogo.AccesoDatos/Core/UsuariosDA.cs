@@ -113,8 +113,15 @@ namespace ABB.Catalogo.AccesoDatos.Core
         public Usuario ModificarUsuario(int IdUsuario, Usuario usuario)
         {
             Usuario SegSSOMUsuario = null;
-            byte[] UserPass = EncriptacionHelper.EncriptarByte(usuario.ClaveTxt);
-            usuario.Clave = UserPass;
+            if (string.IsNullOrWhiteSpace(usuario.ClaveTxt))
+            {
+                usuario.Clave = null;
+            }
+            else
+            {
+                byte[] UserPass = EncriptacionHelper.EncriptarByte(usuario.ClaveTxt);
+                usuario.Clave = UserPass;
+            }
 
             using (SqlConnection conexion = new SqlConnection(ConfigurationManager.ConnectionStrings[ConfigurationManager.AppSettings["cnnSql"]].ConnectionString))
             {
@@ -176,6 +183,31 @@ namespace ABB.Catalogo.AccesoDatos.Core
 
         }
 
+        public bool Eliminar(int idUsuario)
+        {
+            bool resultado = false;
+            string mensaje = string.Empty;
+
+            try
+            {
+                using (SqlConnection conexion = new SqlConnection(ConfigurationManager.ConnectionStrings[ConfigurationManager.AppSettings["cnnSql"]].ConnectionString))
+                {
+                    SqlCommand cmd = new SqlCommand("paUsuario_Eliminar", conexion);
+                    cmd.Parameters.AddWithValue("@IdUsuario", idUsuario);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    conexion.Open();
+                    resultado = cmd.ExecuteNonQuery() > 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                resultado = false;
+                mensaje = ex.Message;
+            }
+
+            return resultado;
+        }
 
 
 

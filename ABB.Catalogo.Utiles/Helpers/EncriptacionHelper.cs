@@ -13,6 +13,9 @@ namespace ABB.Catalogo.Utiles.Helpers
         //para BD SQL Server
         public static byte[] EncriptarByte(string rawText)
         {
+            if (string.IsNullOrWhiteSpace(rawText))
+                return null;
+
             var rijndaelCipher = new RijndaelManaged();
             byte[] rawTextData = Encoding.UTF8.GetBytes(rawText);
 

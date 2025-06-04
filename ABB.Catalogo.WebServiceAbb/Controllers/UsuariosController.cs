@@ -1,12 +1,13 @@
-﻿using System;
+﻿using ABB.Catalogo.AccesoDatos.Core;
+using ABB.Catalogo.Entidades.Core;
+using ABB.Catalogo.LogicaNegocio.Core;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using ABB.Catalogo.AccesoDatos.Core;
-using ABB.Catalogo.Entidades.Core;
-using ABB.Catalogo.LogicaNegocio.Core;
 
 namespace ABB.Catalogo.WebServiceAbb.Controllers
 {
@@ -76,7 +77,7 @@ namespace ABB.Catalogo.WebServiceAbb.Controllers
         // DELETE: api/Usuarios/5
         public void Delete(int id)
         {
-            
+            bool usuario = new UsuariosLN().Eliminar(id);
         }
     }
 }

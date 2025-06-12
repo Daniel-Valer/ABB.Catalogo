@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using WebServicesAbb.Filters;
 
 namespace ABB.Catalogo.WebServiceAbb
 {
@@ -9,9 +10,9 @@ namespace ABB.Catalogo.WebServiceAbb
     {
         public static void Register(HttpConfiguration config)
         {
-            // Configuración y servicios de Web API
+            // Web API configuration and services
 
-            // Rutas de Web API
+            // Web API routes
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(
@@ -19,6 +20,10 @@ namespace ABB.Catalogo.WebServiceAbb
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            config.MessageHandlers.Add(new FIlterJWT());
         }
+
+
     }
 }

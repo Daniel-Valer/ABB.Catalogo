@@ -53,6 +53,7 @@
     <Compile Include="Core\CategoriaLN.cs" />
     <Compile Include="Core\ProductoLN.cs" />
     <Compile Include="Core\RolLN.cs" />
+    <Compile Include="Core\UsuarioApiLN.cs" />
     <Compile Include="Core\UsuariosLN.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

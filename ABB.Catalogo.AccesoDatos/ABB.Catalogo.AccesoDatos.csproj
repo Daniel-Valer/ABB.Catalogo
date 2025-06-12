@@ -46,6 +46,7 @@
     <Compile Include="Core\CategoriaDA.cs" />
     <Compile Include="Core\ProductoDA.cs" />
     <Compile Include="Core\RolDA.cs" />
+    <Compile Include="Core\UsuarioApiAD.cs" />
     <Compile Include="Core\UsuariosDA.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

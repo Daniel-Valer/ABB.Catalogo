@@ -98,5 +98,61 @@ namespace ABB.Catalogo.AccesoDatos.Core
             }
             return producto;
         }
+        public Producto ModificarProducto(int IdProducto, Producto producto)
+        {
+            Producto SegSSOMProducto = null;
+            using (SqlConnection conexion = new SqlConnection(ConfigurationManager.ConnectionStrings[ConfigurationManager.AppSettings["cnnSql"]].ConnectionString))
+            {
+
+                using (SqlCommand comando = new SqlCommand("paProducto_Modificar", conexion))
+                {
+                    comando.CommandType = System.Data.CommandType.StoredProcedure;
+                    comando.Parameters.AddWithValue("@IdProducto", producto.IdProducto);
+                    comando.Parameters.AddWithValue("@IdCategoria", producto.IdCategoria);
+                    comando.Parameters.AddWithValue("@NomProducto", producto.NomProducto);
+                    comando.Parameters.AddWithValue("@MarcaProducto", producto.MarcaProducto);
+                    comando.Parameters.AddWithValue("@ModeloProducto", producto.ModeloProducto);
+                    comando.Parameters.AddWithValue("@LineaProducto", producto.LineaProducto);
+                    comando.Parameters.AddWithValue("@GarantiaProducto", producto.GarantiaProducto);
+                    comando.Parameters.AddWithValue("@Precio", producto.Precio);
+                    comando.Parameters.AddWithValue("@DescripcionTecnica", producto.DescripcionTecnica);
+                    conexion.Open();
+                    SqlDataReader reader = comando.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        SegSSOMProducto = LlenarEntidad(reader);
+
+                    }
+
+                    conexion.Close();
+                }
+            }
+            return SegSSOMProducto;
+        }
+        public bool Eliminar(int idProducto)
+        {
+            bool resultado = false;
+            string mensaje = string.Empty;
+
+            try
+            {
+                using (SqlConnection conexion = new SqlConnection(ConfigurationManager.ConnectionStrings[ConfigurationManager.AppSettings["cnnSql"]].ConnectionString))
+                {
+                    SqlCommand cmd = new SqlCommand("paProducto_Eliminar", conexion);
+                    cmd.Parameters.AddWithValue("@IdProducto", idProducto);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    conexion.Open();
+                    resultado = cmd.ExecuteNonQuery() > 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                resultado = false;
+                mensaje = ex.Message;
+            }
+
+            return resultado;
+        }
     }
 }

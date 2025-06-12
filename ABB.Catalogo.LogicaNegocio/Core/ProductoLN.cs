@@ -43,6 +43,38 @@ namespace ABB.Catalogo.LogicaNegocio.Core
 
             }
         }
+    
+    public Producto ModificarProducto(int IdProducto, Producto producto)
+        {
+            try
+            {
+                return new ProductoDA().ModificarProducto(IdProducto, producto);
+
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex);
+                throw;
+
+            }
+        }
+        public bool Eliminar(int idProducto)
+        {
+            try
+            {
+                ProductoDA producto = new ProductoDA();
+                return producto.Eliminar(idProducto);
+
+
+            }
+            catch (Exception ex)
+            {
+                string innerException = (ex.InnerException == null) ? "" : ex.InnerException.ToString();
+                //Logger.paginaNombre = this.GetType().Name;
+                //Logger.Escribir("Error en Logica de Negocio: " + ex.Message + ". " + ex.StackTrace + ". " + innerException);
+                throw;
+            }
+        }
     }
 }
 

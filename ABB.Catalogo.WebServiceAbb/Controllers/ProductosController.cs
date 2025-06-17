@@ -21,20 +21,49 @@ namespace WebServicesAbb.Controllers
 
             return catalogo;
         }
-
-        // GET: api/Productos/5
-        public string Get(int id)
+        [HttpGet]
+        // public Producto GetProductId([FromUri] int IdProducto)
+        public IHttpActionResult GetProductId([FromUri] int IdProducto)
         {
-            return "value";
+            if (IdProducto <= 0)
+            {
+                return BadRequest("el Id debe ser mayor que 0");
+            }
+
+            try
+            {
+                Producto pro = new Producto();
+                ProductoLN producto = new ProductoLN();
+                pro = producto.BuscaProductoId(IdProducto);
+                return Ok(pro);
+            }
+            catch (Exception ex)
+            {
+                string innerException = (ex.InnerException == null) ? "" : ex.InnerException.ToString();
+                //Logger.paginaNombre = this.GetType().Name;
+                //Logger.Escribir("Error en Logica de Negocio: " + ex.Message + ". " + ex.StackTrace + ". " + innerException);
+                throw;
+            }
+
+
         }
 
         // POST: api/Productos
         [HttpPost]
         public IHttpActionResult Post([FromBody] Producto producto)
         {
-            if (producto == null)
-                return BadRequest("El producto no puede ser nulo");
-
+            if (producto.IdCategoria <= 0)
+                return BadRequest("IdCategoria invalido");
+            if(producto.NomProducto == null || producto.NomProducto.Trim() == "")
+                return BadRequest("Nombre del producto es obligatorio");
+            if (producto.Precio < 0)
+                return BadRequest("el precio debe ser mayor o igual a cero");
+            if (producto.LineaProducto == null || producto.LineaProducto.Trim() == "")
+                return BadRequest("LineaProducto del producto es obligatorio");
+            if (producto.MarcaProducto == null || producto.MarcaProducto.Trim() == "")
+                return BadRequest("MarcaProducto del producto es obligatorio");
+            if (producto.ModeloProducto == null || producto.ModeloProducto.Trim() == "")
+                return BadRequest("ModeloProducto del producto es obligatorio");
             Producto resultado = new ProductoLN().InsertarProducto(producto);
             return Ok(resultado);
         }

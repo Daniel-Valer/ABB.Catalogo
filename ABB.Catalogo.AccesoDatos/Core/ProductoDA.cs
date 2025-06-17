@@ -129,6 +129,41 @@ namespace ABB.Catalogo.AccesoDatos.Core
             }
             return SegSSOMProducto;
         }
+        public Producto BuscaProductoId(int pProductoId)
+        {
+            Producto entidad = null;
+            try
+            {
+
+                using (SqlConnection conexion = new SqlConnection(ConfigurationManager.ConnectionStrings[ConfigurationManager.AppSettings["cnnSql"]].ConnectionString))
+                {
+                    using (SqlCommand comando = new SqlCommand("paProducto_BuscaProductoId", conexion))
+                    {
+                        comando.CommandType = CommandType.StoredProcedure;
+                        comando.Parameters.AddWithValue("@ParamProducto", pProductoId);
+                        conexion.Open();
+                        SqlDataReader reader = comando.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            entidad = LlenarEntidad(reader);
+
+                        }
+                        conexion.Close();
+                    }
+
+                }
+
+                return entidad;
+            }
+            catch (Exception ex)
+            {
+                string innerException = (ex.InnerException == null) ? "" : ex.InnerException.ToString();
+                //Logger.paginaNombre = this.GetType().Name;
+                //Logger.Escribir("Error en Logica de Negocio: " + ex.Message + ". " + ex.StackTrace + ". " + innerException);
+                return entidad;
+            }
+
+        }
         public bool Eliminar(int idProducto)
         {
             bool resultado = false;

@@ -1,6 +1,7 @@
 ﻿using ABB.Catalogo.AccesoDatos.Core;
 using ABB.Catalogo.Entidades.Core;
 using ABB.Catalogo.LogicaNegocio.Core;
+using Antlr.Runtime;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -156,12 +157,13 @@ namespace ABB.Catalogo.ClienteWeb.Controllers
         public ActionResult ChangePassword(int id)
         {
             string controladora = "Usuarios";
-            string metodo = "GetUserId";
+            TokenResponse tokenrsp = Respuest();
             Usuario users = new Usuario();
             using (WebClient usuario = new WebClient())
             {
                 usuario.Headers.Clear();//borra datos anteriores
                 //establece el tipo de dato de tranferencia
+                usuario.Headers[HttpRequestHeader.Authorization] = "Bearer " + tokenrsp.Token;
                 usuario.Headers[HttpRequestHeader.ContentType] = jsonMediaType;
                 //typo de decodificador reconocimiento carecteres especiales
                 usuario.Encoding = UTF8Encoding.UTF8;
@@ -184,11 +186,13 @@ namespace ABB.Catalogo.ClienteWeb.Controllers
         public ActionResult ChangePassword(int idUsuario, Usuario collection)
         {
             string controladora = "Usuarios"; // Nombre del controlador en la API
+            TokenResponse tokenrsp = Respuest();
             try
             {
                 using (WebClient cliente = new WebClient())
                 {
                     cliente.Headers.Clear(); // Borra cabeceras anteriores
+                    cliente.Headers[HttpRequestHeader.Authorization] = "Bearer " + tokenrsp.Token;
                     cliente.Headers[HttpRequestHeader.ContentType] = "application/json"; // Tipo de contenido JSON
                     cliente.Encoding = UTF8Encoding.UTF8; // Establecer la codificación de caracteres
 
@@ -275,7 +279,7 @@ namespace ABB.Catalogo.ClienteWeb.Controllers
         {
             TokenResponse respuesta = new TokenResponse();
             string controladora = "Auth";
-            string metodo = "Post";
+            //string metodo = "Post";
             var resultado = "";
             UsuariosApi usuapi = new UsuariosApi();
             usuapi.Codigo = Convert.ToInt32(ConfigurationManager.AppSettings["UsuApiCodigo"]);

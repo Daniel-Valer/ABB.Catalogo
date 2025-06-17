@@ -1,13 +1,13 @@
 ﻿@model ABB.Catalogo.Entidades.Core.Producto
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Edit";
 }
 
-<h2>Create</h2>
+<h2>Edit</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     
@@ -16,15 +16,24 @@
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <div class="form-group">
-        <label for="txt1" class="control-label col-md-2">
-            Categoria:
-        </label>
+        @Html.LabelFor(model => model.IdProducto, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownListFor(Model => Model.IdCategoria,
-           new SelectList(ViewBag.listaCategorias, "IdCategoria", "DescCategoria"),
-           htmlAttributes: new { @id = "ddlCategoria", @class = "form-control input-sm" })
+            @Html.TextBoxFor(model => model.IdProducto, new { @class = "form-control", @readonly = "readonly" })
+            @Html.ValidationMessageFor(model => model.IdProducto, "", new { @class = "text-danger" })
         </div>
     </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.IdCategoria, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.IdCategoria,
+                new SelectList(ViewBag.listaCategorias, "IdCategoria", "DescCategoria", Model.IdCategoria),
+                htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.IdCategoria, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
 
     <div class="form-group">
         @Html.LabelFor(model => model.NomProducto, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -84,7 +93,7 @@
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-default" />
+            <input type="submit" value="Save" class="btn btn-default" />
         </div>
     </div>
 </div>

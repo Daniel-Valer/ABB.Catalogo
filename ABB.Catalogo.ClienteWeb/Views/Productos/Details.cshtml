@@ -1,0 +1,98 @@
+﻿@model ABB.Catalogo.Entidades.Core.Producto
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Producto</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IdProducto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdProducto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdCategoria)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdCategoria)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DescCategoria)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DescCategoria)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NomProducto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomProducto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MarcaProducto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MarcaProducto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModeloProducto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModeloProducto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LineaProducto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LineaProducto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GarantiaProducto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GarantiaProducto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Precio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Precio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DescripcionTecnica)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DescripcionTecnica)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -14,7 +14,8 @@ namespace ABB.Catalogo.ClienteWeb.Controllers
 {
     public class ProductosController : Controller
     {
-        string RutaApi = "https://localhost:44318/Api/"; //define la ruta del web api
+        string RutaApi = "https://localhost:44318/Api/";
+        //string RutaApi = "http://localhost/WebServiceAbb/Api/"; //define la ruta del web api
         string jsonMediaType = "application/json"; // define el tipo de dat
         // GET: Productos
         public ActionResult Index()

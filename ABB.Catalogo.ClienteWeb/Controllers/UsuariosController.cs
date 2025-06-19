@@ -18,7 +18,7 @@ namespace ABB.Catalogo.ClienteWeb.Controllers
 {
     public class UsuariosController : Controller
     {
-        string RutaApi = "https://localhost:44318/Api/"; //define la ruta del web api
+        string RutaApi = "http://localhost/WebServiceAbb/Api/"; //define la ruta del web api
         string jsonMediaType = "application/json"; // define el tipo de dat
         // GET: Usuarios
         public ActionResult Index()
@@ -242,7 +242,7 @@ namespace ABB.Catalogo.ClienteWeb.Controllers
 
         // POST: Usuarios/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id, Usuario collection)
         {
             string controladora = "Usuarios"; // Nombre del controlador en la API
             try

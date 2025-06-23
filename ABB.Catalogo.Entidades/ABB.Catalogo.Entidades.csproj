@@ -37,6 +37,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Mvc">
       <HintPath>..\ABB.Catalogo.Utiles\Binarios\System.Web.Mvc.dll</HintPath>
     </Reference>
@@ -52,6 +53,7 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Core\Categoria.cs" />
     <Compile Include="Core\CustomError.cs" />
+    <Compile Include="Core\Opcion.cs" />
     <Compile Include="Core\Producto.cs" />
     <Compile Include="Core\Rol.cs" />
     <Compile Include="Core\Stock.cs" />
@@ -59,6 +61,7 @@
     <Compile Include="Core\Usuario.cs" />
     <Compile Include="Core\UsuariosApi.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VariablesWeb.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Filter\" />

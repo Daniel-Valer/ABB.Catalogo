@@ -14,7 +14,8 @@ namespace ABB.Catalogo.ClienteWeb.Controllers
         // GET: Login
         public ActionResult Index()
         {
-            return View();
+            Usuario user = new Usuario();
+            return View(user);
         }
     }
 }

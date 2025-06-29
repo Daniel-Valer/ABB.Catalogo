@@ -109,6 +109,19 @@ namespace ABB.Catalogo.LogicaNegocio.Core
                 throw;
             }
         }
+        public Usuario BuscarUsuario(Usuario Usuario)
+        {
+            try
+            {
+                return new UsuariosDA().BuscarUsuario(Usuario);
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex);
+                throw;
+            }
+        }
+
 
 
 

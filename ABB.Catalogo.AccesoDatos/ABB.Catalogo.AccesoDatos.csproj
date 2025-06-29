@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="Core\CategoriaDA.cs" />
+    <Compile Include="Core\OpcionDA.cs" />
     <Compile Include="Core\ProductoDA.cs" />
     <Compile Include="Core\RolDA.cs" />
     <Compile Include="Core\UsuarioApiAD.cs" />

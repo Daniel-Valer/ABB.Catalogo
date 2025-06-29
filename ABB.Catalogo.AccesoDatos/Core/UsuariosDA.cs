@@ -208,6 +208,32 @@ namespace ABB.Catalogo.AccesoDatos.Core
 
             return resultado;
         }
+        public Usuario BuscarUsuario(Usuario usuario)
+        {
+            Usuario SegSSOMUsuario = null;
+            using (SqlConnection conexion = new SqlConnection(ConfigurationManager.ConnectionStrings[ConfigurationManager.AppSettings["cnnSql"]].ConnectionString))
+            {
+                
+                using (SqlCommand comando = new SqlCommand("paUsuario_BuscaCodUserClave", conexion))
+                {
+                    comando.CommandType = System.Data.CommandType.StoredProcedure;
+                    comando.Parameters.AddWithValue("@Clave", usuario.Clave);
+                    comando.Parameters.AddWithValue("@CodUsuario", usuario.CodUsuario);
+                    conexion.Open();
+                    SqlDataReader reader = comando.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        SegSSOMUsuario = LlenarEntidad(reader);
+                       
+                    }
+                   
+                    conexion.Close();
+                }
+            }
+            return SegSSOMUsuario;
+        }
+
+
 
 
 

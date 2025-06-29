@@ -60,11 +60,11 @@
     <Compile Include="Core\TokenResponse.cs" />
     <Compile Include="Core\Usuario.cs" />
     <Compile Include="Core\UsuariosApi.cs" />
+    <Compile Include="Filter\ExceptionFilterAtributes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VariablesWeb.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Filter\" />
     <Folder Include="Parcial\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

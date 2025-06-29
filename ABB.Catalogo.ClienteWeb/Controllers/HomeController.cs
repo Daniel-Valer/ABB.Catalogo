@@ -26,5 +26,18 @@ namespace ABB.Catalogo.ClienteWeb.Controllers
 
             return View();
         }
+        public ActionResult PaginaPrueba()
+        {
+            return View();
+        }
+        public ActionResult Error500()
+        {
+            return View();
+        }
+        public ActionResult PaginaNoEncontrada()
+        {
+            return View();
+        }
+
     }
 }

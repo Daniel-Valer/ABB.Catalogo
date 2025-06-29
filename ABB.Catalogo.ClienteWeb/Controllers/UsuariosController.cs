@@ -13,12 +13,15 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using System.Web.WebSockets;
+using ABB.Catalogo.Utiles.Helpers;
+using ABB.Catalogo.Entidades.Base;
 
 namespace ABB.Catalogo.ClienteWeb.Controllers
 {
-    public class UsuariosController : Controller
+    public class UsuariosController : BaseLN
     {
-        string RutaApi = "http://localhost/WebServiceAbb/Api/"; //define la ruta del web api
+        string RutaApi = "https://localhost:44318/Api/";
+        //string RutaApi = "http://localhost/WebServiceAbb/Api/"; //define la ruta del web api
         string jsonMediaType = "application/json"; // define el tipo de dat
         // GET: Usuarios
         public ActionResult Index()

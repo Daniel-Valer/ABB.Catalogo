@@ -16,6 +16,12 @@ namespace ABB.Catalogo.ClienteWeb
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            #region Log
+
+            log4net.Config.XmlConfigurator.Configure();
+
+            #endregion
         }
     }
 }

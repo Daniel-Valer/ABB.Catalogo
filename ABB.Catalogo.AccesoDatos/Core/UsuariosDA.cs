@@ -217,8 +217,8 @@ namespace ABB.Catalogo.AccesoDatos.Core
                 using (SqlCommand comando = new SqlCommand("paUsuario_BuscaCodUserClave", conexion))
                 {
                     comando.CommandType = System.Data.CommandType.StoredProcedure;
-                    comando.Parameters.AddWithValue("@Clave", usuario.Clave);
-                    comando.Parameters.AddWithValue("@CodUsuario", usuario.CodUsuario);
+                    comando.Parameters.AddWithValue("@ParamPass", usuario.Clave);
+                    comando.Parameters.AddWithValue("@ParamUsuario", usuario.CodUsuario);
                     conexion.Open();
                     SqlDataReader reader = comando.ExecuteReader();
                     while (reader.Read())
